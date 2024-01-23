@@ -1,4 +1,4 @@
-import { MediaType, TrendingResult } from '~/intefaces/api-results';
+import { MediaType, ResultDetails, TrendingResult } from '~/intefaces/api-results';
 
 const API_KEY = process.env.EXPO_PUBLIC_API_KEY;
 const url = 'https://api.themoviedb.org/3';
@@ -22,10 +22,8 @@ export const getSearchResults = async (query: string): Promise<TrendingResult> =
   return data;
 };
 
-export const getMovieDetails = async (id: number, type: MediaType): Promise<TrendingResult> => {
-  const response = await fetch(
-    `${url}/${type}/${id}?${language}&api_key=${API_KEY}`
-  );
+export const getMovieDetails = async (id: number, type: MediaType): Promise<ResultDetails> => {
+  const response = await fetch(`${url}/${type}/${id}?${language}&api_key=${API_KEY}`);
 
   const data = await response.json();
   return data;

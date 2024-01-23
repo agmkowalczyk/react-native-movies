@@ -9,7 +9,7 @@ const Layout = () => {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: theme.purple7.get(),
+          backgroundColor: theme.blue7.get(),
         },
         headerTintColor: '#fff',
       }}>
@@ -24,6 +24,14 @@ const Layout = () => {
         name="movie/[id]"
         options={{
           title: '',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <Stack.Screen
+        name="tv/[id]"
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
         }}
       />
     </Stack>
