@@ -8,7 +8,7 @@ const Layout = () => {
       screenOptions={{
         headerShown: true,
         drawerHideStatusBarOnOpen: true,
-        drawerActiveBackgroundColor: colorTokens.dark.blue.blue7,
+        drawerActiveBackgroundColor: colorTokens.dark.purple.purple7,
         drawerActiveTintColor: '#fff',
         drawerLabelStyle: { marginLeft: -20 },
       }}>
@@ -25,7 +25,9 @@ const Layout = () => {
         options={{
           title: 'My Favorites',
           headerShown: false,
-          drawerIcon: ({ color, size }) => <Ionicons name="star-outline" size={size} color={color} />,
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="star-outline" size={size} color={color} />
+          ),
         }}
       />
     </Drawer>
