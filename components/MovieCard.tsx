@@ -4,7 +4,7 @@ import { Card, Paragraph, Text, YStack } from 'tamagui';
 import { ResultItem } from '~/intefaces/api-results';
 
 const MovieCard = ({ movie }: { movie: ResultItem }) => {
-  const type = movie.media_type === 'movie' ? 'movie' : 'tv'
+  const type = movie.media_type === 'movie' ? 'movie' : 'tv';
 
   return (
     <Link href={`/(drawer)/home/${type}/${movie.id}`} asChild>

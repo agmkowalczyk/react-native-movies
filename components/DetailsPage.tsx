@@ -1,15 +1,54 @@
+import { Ionicons } from '@expo/vector-icons';
+import { Stack } from 'expo-router';
 import { ImageBackground } from 'react-native';
+import { useMMKVBoolean, useMMKVObject } from 'react-native-mmkv';
 import Animated from 'react-native-reanimated';
-import { H1, Main, Paragraph, ScrollView, Text, YStack } from 'tamagui';
+import { Button, H1, Main, Paragraph, ScrollView, Text, YStack, useTheme } from 'tamagui';
 import { MediaType } from '~/intefaces/api-results';
+import { Favorite } from '~/intefaces/favorites';
 import { useGetMovieDetails } from '~/react-query/queries';
 
 const DetailsPage = ({ id, mediaType }: { id: string; mediaType: MediaType }) => {
+  const theme = useTheme();
+  const [isFavorite, setIsFavorite] = useMMKVBoolean(`${mediaType}-${id}`);
+  const [favorites, setFavorites] = useMMKVObject<Favorite[]>('favorites');
+
   const details = useGetMovieDetails(+id, mediaType);
   const type = mediaType === 'movie' ? 'movie' : 'tv';
 
+  const toggleFavorite = () => {
+    const current = favorites || [];
+
+    if (!isFavorite) {
+      setFavorites([
+        ...current,
+        {
+          id,
+          mediaType,
+          thumb: details.data?.poster_path!,
+          name: details.data?.title || details.data?.name!,
+        },
+      ]);
+    } else {
+      setFavorites(current.filter((fav) => fav.id !== id || fav.mediaType !== mediaType));
+    }
+  };
+
   return (
     <Main>
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <Button unstyled onPress={toggleFavorite}>
+              <Ionicons
+                name={isFavorite ? 'heart' : 'heart-outline'}
+                size={26}
+                color={theme.blue9.get()}
+              />
+            </Button>
+          ),
+        }}
+      />
       <ScrollView>
         <ImageBackground
           source={{
