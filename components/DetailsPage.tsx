@@ -1,10 +1,12 @@
 import { ImageBackground } from 'react-native';
-import { H1, Image, Main, Paragraph, ScrollView, Text, YStack } from 'tamagui';
+import Animated from 'react-native-reanimated';
+import { H1, Main, Paragraph, ScrollView, Text, YStack } from 'tamagui';
 import { MediaType } from '~/intefaces/api-results';
 import { useGetMovieDetails } from '~/react-query/queries';
 
 const DetailsPage = ({ id, mediaType }: { id: string; mediaType: MediaType }) => {
   const details = useGetMovieDetails(+id, mediaType);
+  const type = mediaType === 'movie' ? 'movie' : 'tv';
 
   return (
     <Main>
@@ -13,15 +15,15 @@ const DetailsPage = ({ id, mediaType }: { id: string; mediaType: MediaType }) =>
           source={{
             uri: `https://image.tmdb.org/t/p/w400/${details.data?.backdrop_path}`,
           }}>
-          <Image
+          <Animated.Image
             source={{
               uri: `https://image.tmdb.org/t/p/w400/${details.data?.poster_path}`,
             }}
             width={150}
             height={250}
-            mx={20}
-            my={40}
+            style={{ marginLeft: 20, marginVertical: 40 }}
             borderRadius={6}
+            sharedTransitionTag={`${type}-${id}`}
           />
         </ImageBackground>
 
