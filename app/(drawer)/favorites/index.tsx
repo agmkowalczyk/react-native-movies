@@ -12,7 +12,7 @@ const Favorites = () => {
   const [favorites, setFavorites] = useMMKVObject<Favorite[]>('favorites');
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'red', paddingTop: (StatusBar.currentHeight || 0)+ 10  }}>
+    <SafeAreaView style={{ paddingTop: (StatusBar.currentHeight || 0)+ 10  }}>
       <Main>
         <ScrollView>
           {favorites?.map((fav) => (

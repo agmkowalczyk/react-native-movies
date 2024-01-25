@@ -17,6 +17,7 @@ const DetailsPage = ({ id, mediaType }: { id: string; mediaType: MediaType }) =>
   const type = mediaType === 'movie' ? 'movie' : 'tv';
 
   const toggleFavorite = () => {
+    // return setFavorites([])
     const current = favorites || [];
 
     if (!isFavorite) {
@@ -32,6 +33,7 @@ const DetailsPage = ({ id, mediaType }: { id: string; mediaType: MediaType }) =>
     } else {
       setFavorites(current.filter((fav) => fav.id !== id || fav.mediaType !== mediaType));
     }
+    setIsFavorite(!isFavorite)
   };
 
   return (

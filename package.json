@@ -2,13 +2,14 @@
   "name": "react-native-movies",
   "version": "1.0.0",
   "scripts": {
-    "android": "expo start --android",
+    "android": "expo run:android",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
-    "ios": "expo start --ios",
+    "ios": "expo run:ios",
     "start": "expo start",
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/config-plugins": "^7.2.5",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/native": "^6.1.7",
@@ -17,10 +18,12 @@
     "@tamagui/shorthands": "1.74.8",
     "@tamagui/themes": "1.74.8",
     "@tanstack/react-query": "^5.17.19",
-    "expo": "~49.0.11",
+    "expo": "49.0.15",
+    "expo-constants": "~14.4.2",
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
     "expo-router": "^2.0.0",
+    "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
     "expo-web-browser": "~12.3.2",
@@ -51,12 +54,10 @@
     "extends": "universe/native"
   },
   "resolutions": {
-    "react-refresh": "~0.14.0",
-    "expo-modules-core": "~1.11.0"
+    "react-refresh": "~0.14.0"
   },
   "overrides": {
-    "react-refresh": "~0.14.0",
-    "expo-modules-core": "~1.11.0"
+    "react-refresh": "~0.14.0"
   },
   "expo": {
     "install": {

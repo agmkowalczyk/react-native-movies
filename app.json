@@ -28,7 +28,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.agmkowalczyk.reactnativemovies"
     },
     "android": {
       "adaptiveIcon": {
@@ -36,6 +37,14 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.agmkowalczyk.reactnativemovies"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "cfcf1520-7b78-4595-b627-73813d251bea"
+      }
     }
   }
 }
